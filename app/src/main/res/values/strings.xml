@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">DietApp</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="selectAnother">Выбрать другую диету</string>
+    <string name="vol">Объем</string>
+    <string name="design">Блюдо</string>
+    <string name="nextPlan">Следующий прием пищи</string>
+    <string name="sportAct">- - -</string>
+    <string name="sportName">Занятия спортом</string>
+    <string name="volOfWater">- - -</string>
+    <string name="waterName">Объем выпиваемой воды</string>
+    <string name="untilNextFood">- - -</string>
+    <string name="nextFoodName">До следующего приема пищи</string>
+    <string name="untilDietEnd">- - -</string>
+    <string name="untilDietName">До конца диеты</string>
+    <string name="dietName">- - -</string>
+    <string name="prod1">- - -</string>
+    <string name="prod2">- - -</string>
+    <string name="prod3">- - -</string>
+    <string name="prod4">- - -</string>
+    <string name="prod5">- - -</string>
+    <string name="prod6">- - -</string>
+    <string name="vol1">- - -</string>
+    <string name="vol2">- - -</string>
+    <string name="vol3">- - -</string>
+    <string name="vol4">- - -</string>
+    <string name="vol5">- - -</string>
+    <string name="vol6">- - -</string>
+    <string name="adviceName">Совет на день</string>
+    <string name="advice" />
+    <string name="advices">Советы</string>
+    <string name="selectDietButton">Выберите диету</string>
+    <string name="backButton">Вернуться</string>
+</resources>

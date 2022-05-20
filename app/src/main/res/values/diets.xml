@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="diets">
+        <item>Кето диета</item>
+        <item>Химическая диета</item>
+        <item>Диета для ленивых</item>
+        <item>Кремлевская диета</item>
+        <item>Японская диета</item>
+    </string-array>
+
+</resources>
