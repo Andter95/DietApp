@@ -30,19 +30,17 @@ public class SelectDietActivity extends ListActivity {
     }
 
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        String name = Diet.openText(getApplicationContext()).split("\n")[0];
-        String desc = Diet.getDesc(Diet.openText(getApplicationContext()).split("\n")[0], getApplicationContext());
+        String name = Diet.getNames(Diet.createListOfDiets(getApplicationContext()))[position];
+        String desc = Diet.getDescs(Diet.createListOfDiets(getApplicationContext()))[position];
         Intent intent = new Intent(this, MainActivity.class);
         new AlertDialog.Builder(SelectDietActivity.this)
                 .setTitle(name)
                 .setMessage(desc)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        String item = (String) getListAdapter().getItem(position);
-                        Context context = getApplicationContext();
-                        Diet.saveDiet(item, context);
-                        startActivity(intent);
-                    }
+                .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                    String item = (String) getListAdapter().getItem(position);
+                    Context context = getApplicationContext();
+                    Diet.saveDiet(item, context);
+                    startActivity(intent);
                 })
                 .setNegativeButton(android.R.string.no, null)
                 .setIcon(android.R.drawable.ic_dialog_info)
@@ -53,8 +51,6 @@ public class SelectDietActivity extends ListActivity {
         Diet.saveDiet(item, context);
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);*/
-
     }
-
 }
 

@@ -71,6 +71,14 @@ public class Diet {
         return names;
     }
 
+    public static String[] getDescs(Diet[] d) {
+        String[] names = new String[d.length];
+        for (int i = 0; i < d.length; i++) {
+            names[i] = d[i].getDescription();
+        }
+        return names;
+    }
+
     static String[] makeAdvices(String[] diets, int idOfDiet) {
         String[] advs = new String[valOfAdv(diets, idOfDiet)];
         int l = 0;
