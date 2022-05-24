@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             prod4.setText(schld[6]);
             val4.setText(schld[7]);
             prod5.setText(schld[8]);
-
             val5.setText(schld[9]);
             prod6.setText(schld[10]);
             val6.setText(schld[11]);
@@ -85,24 +84,43 @@ public class MainActivity extends AppCompatActivity {
             prod6.setText("");
             val6.setText("");
         }
-    }
+        if (Diet.isOver(Diet.plusDate(Diet.openText(getApplicationContext()).split("\n")[1].split(" "), Diet.getLength(Diet.openText(getApplicationContext()).split("\n")[0], getApplicationContext())))) {
+            name.setText(Diet.openText(getApplicationContext()).split("\n")[0]);
+            untilItEnds.setText("- - -");
+            toNextFood.setText("Диета завершилась");
+            litres.setText(Diet.getLitres(Diet.openText(getApplicationContext()).split("\n")[0], getApplicationContext()));
+            sportActivity.setText(Diet.getSports(Diet.openText(getApplicationContext()).split("\n")[0], getApplicationContext()));
+            status.setText("Последний прием пищи");
+            String[] schld = Diet.getSchldAndValue(Diet.openText(getApplicationContext()).split("\n")[1],
+                    Diet.getLength(Diet.openText(getApplicationContext()).split("\n")[0], getApplicationContext()),
+                    Diet.openText(getApplicationContext()).split("\n")[0], getApplicationContext());
+            prod1.setText(schld[0]);
+            val1.setText(schld[1]);
+            prod2.setText(schld[2]);
+            val2.setText(schld[3]);
+            prod3.setText(schld[4]);
+            val3.setText(schld[5]);
+            prod4.setText(schld[6]);
+            val4.setText(schld[7]);
+            prod5.setText(schld[8]);
+            val5.setText(schld[9]);
+            prod6.setText(schld[10]);
+            val6.setText(schld[11]);
+        }}
 
-    public void onClickSelect(View view) {
-        Intent intent = new Intent(this, SelectDietActivity.class);
-        startActivity(intent);
-    }
+        public void onClickSelect (View view){
+            Intent intent = new Intent(this, SelectDietActivity.class);
+            startActivity(intent);
+        }
+        static int co = 0;
 
-    static int co = 0;
-
-    public void onClickAdv(View view) {
-        TextView adv = findViewById(R.id.textView15);
-        String[] advs = Diet.getAdv(Diet.openText(getApplicationContext()).split("\n")[0], getApplicationContext());
-        adv.setText(advs[co]);
-        co++;
-        if (co == advs.length) {
-            co = 0;
+        public void onClickAdv (View view){
+            TextView adv = findViewById(R.id.textView15);
+            String[] advs = Diet.getAdv(Diet.openText(getApplicationContext()).split("\n")[0], getApplicationContext());
+            adv.setText(advs[co]);
+            co++;
+            if (co == advs.length) {
+                co = 0;
+            }
         }
     }
-
-
-}

@@ -332,6 +332,19 @@ public class Diet {
         return !openText(context).equals("");
     }
 
+//    public static boolean isEnd(String[] start, int len) {
+//        start = plusDate(start, len);
+//        String[] today = getNormalDate().split(" ");
+//        int[] start1 = new int[]{Integer.parseInt(start[0]), Integer.parseInt(start[1]), Integer.parseInt(start[2])};
+//        int[] today1 = new int[]{Integer.parseInt(today[0]), Integer.parseInt(today[1]), Integer.parseInt(today[2])};
+//        if (start1[0] > today1[0] || (start1[0] == today1[0] && start1[1] > today1[1]) || (start1[0] == today1[0] && start1[1] == today1[1] && start1[2] > today1[2]) ||
+//                (start1[0] == today1[0] && start1[1] == today1[1] && start1[2] == today1[2] && start1[3] > today1[3]) ||
+//                (start1[0] == today1[0] && start1[1] == today1[1] && start1[2] == today1[2] && start1[3] == today1[3] && start1[4] > today1[4])) {
+//            return true;
+//        }
+//        return false;
+//    }
+
     public static String getNextFoodTime(String name, Context context) {
         int num = 0;
         Diet[] arr = createListOfDiets(context);
@@ -448,10 +461,10 @@ public class Diet {
                 + calendar.get(Calendar.HOUR_OF_DAY) + " " + calendar.get(Calendar.MINUTE);
     }
 
-    static String getNormalDate(Calendar calendar) {
-        return calendar.get(Calendar.YEAR) + " " + (calendar.get(Calendar.MONTH) + 1) + " " + calendar.get(Calendar.DAY_OF_MONTH) + " "
-                + calendar.get(Calendar.HOUR_OF_DAY) + " " + calendar.get(Calendar.MINUTE);
-    }
+//    static String getNormalDate(Calendar calendar) {
+//        return calendar.get(Calendar.YEAR) + " " + (calendar.get(Calendar.MONTH) + 1) + " " + calendar.get(Calendar.DAY_OF_MONTH) + " "
+//                + calendar.get(Calendar.HOUR_OF_DAY) + " " + calendar.get(Calendar.MINUTE);
+//    }
 
     public static String getLitres(String name, Context context) {
         Diet[] arr = createListOfDiets(context);
@@ -475,19 +488,18 @@ public class Diet {
         return "- - -";
     }
 
-    public static String getDesc(String name, Context context) {
-        Diet[] arr = createListOfDiets(context);
-        String[] names = getNames(arr);
-        for (int i = 0; i < names.length; i++) {
-            if (Objects.equals(name, names[i])) {
-                return arr[i].getDescription();
-            }
-        }
-        return "- - -";
-    }
+//    public static String getDesc(String name, Context context) {
+//        Diet[] arr = createListOfDiets(context);
+//        String[] names = getNames(arr);
+//        for (int i = 0; i < names.length; i++) {
+//            if (Objects.equals(name, names[i])) {
+//                return arr[i].getDescription();
+//            }
+//        }
+//        return "- - -";
+//    }
 
-    static boolean isOver(String dateEnd1) {
-        String[] dateEnd = dateEnd1.split(" ");
+    public static boolean isOver(String[] dateEnd) {
         String today1 = getNormalDate();
         String[] today = today1.split(" ");
         int yearT = Integer.parseInt(today[0]);
@@ -502,16 +514,18 @@ public class Diet {
         int minE = Integer.parseInt(dateEnd[4]);
         if (yearT > yearE) {
             return true;
-        } else if (monthT > monthE) {
+        } else if (monthT > monthE && yearE==yearT) {
             return true;
-        } else if (dayT > dayE) {
+        } else if (dayT > dayE && monthT==monthE) {
             return true;
-        } else if (hourT > hourE) {
+        } else if (hourT > hourE && dayT==dayE && monthT==monthE) {
             return true;
-        } else return minT > minE;
+        } else return minT > minE && hourT == hourE && dayT==dayE && monthT==monthE;
     }
 
     static String[] plusDate(String[] date, int dif) {
+        int hour = Integer.parseInt(getNormalDate().split(" ")[3]);
+        int min = Integer.parseInt(getNormalDate().split(" ")[4]);
         int year = Integer.parseInt(date[0]);
         int month = Integer.parseInt(date[1]);
         int day = Integer.parseInt(date[2]) + dif;
@@ -525,7 +539,7 @@ public class Diet {
             }
             maxDay = howDays(month, year);
         }
-        return new String[]{String.valueOf(year), String.valueOf(month), String.valueOf(day)};
+        return new String[]{String.valueOf(year), String.valueOf(month), String.valueOf(day), String.valueOf(hour), String.valueOf(min)};
     }
 
     static int howDays(int mon, int year) {
