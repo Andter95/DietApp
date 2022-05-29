@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             prod6.setText("");
             val6.setText("");
         }
-        if (Diet.isOver(Diet.plusDate(Diet.openText(getApplicationContext()).split("\n")[1].split(" "), Diet.getLength(Diet.openText(getApplicationContext()).split("\n")[0], getApplicationContext())))) {
+        if (Diet.checkSaves(getApplicationContext()) && Diet.isOver(Diet.plusDate(Diet.openText(getApplicationContext()).split("\n")[1].split(" "), Diet.getLength(Diet.openText(getApplicationContext()).split("\n")[0], getApplicationContext())))) {
             name.setText(Diet.openText(getApplicationContext()).split("\n")[0]);
             untilItEnds.setText("- - -");
             toNextFood.setText("Диета завершилась");
@@ -106,21 +106,23 @@ public class MainActivity extends AppCompatActivity {
             val5.setText(schld[9]);
             prod6.setText(schld[10]);
             val6.setText(schld[11]);
-        }}
-
-        public void onClickSelect (View view){
-            Intent intent = new Intent(this, SelectDietActivity.class);
-            startActivity(intent);
-        }
-        static int co = 0;
-
-        public void onClickAdv (View view){
-            TextView adv = findViewById(R.id.textView15);
-            String[] advs = Diet.getAdv(Diet.openText(getApplicationContext()).split("\n")[0], getApplicationContext());
-            adv.setText(advs[co]);
-            co++;
-            if (co == advs.length) {
-                co = 0;
-            }
         }
     }
+
+    public void onClickSelect(View view) {
+        Intent intent = new Intent(this, SelectDietActivity.class);
+        startActivity(intent);
+    }
+
+    static int co = 0;
+
+    public void onClickAdv(View view) {
+        TextView adv = findViewById(R.id.textView15);
+        String[] advs = Diet.getAdv(Diet.openText(getApplicationContext()).split("\n")[0], getApplicationContext());
+        adv.setText(advs[co]);
+        co++;
+        if (co == advs.length) {
+            co = 0;
+        }
+    }
+}

@@ -209,7 +209,7 @@ public class Diet {
         StringBuilder res = new StringBuilder();
         for (int i = 0; i < arr.length; i++) {
             if (i % 2 == 1 && Objects.equals(arr[i], "bos")) {
-                res.append("_до_наступления_сытости");
+                res.append(" до_наступления_сытости");
             } else if (i % 2 == 1) {
                 res.append(" ").append(arr[i]);
             }
